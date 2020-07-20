@@ -14,6 +14,7 @@ Python3.7
 $ git clone https://github.com/RuiHirano/diipdp_iot_system.git
 ```
 ### 2.Set Line API Token
+/config/config.empty.json
 ```/config/config.empty.json
 {
     "line": {
