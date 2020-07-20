@@ -1,0 +1,6 @@
+{
+    "line": {
+        "line_notify_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "line_notify_api": "https://notify-api.line.me/api/notify"
+    }
+}
