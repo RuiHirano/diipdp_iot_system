@@ -1,4 +1,3 @@
-import schedule
 from typing import List, NamedTuple, Dict
 from utils.line import LineManager
 from utils.type import Person, Sensor

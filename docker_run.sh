@@ -1,2 +1,2 @@
 #!/bin/sh
-docker run --rm -it diidpd_iot_system:latest
+docker run --rm -it -p 5000:5000 diidpd_iot_system:latest
