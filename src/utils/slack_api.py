@@ -1,7 +1,7 @@
 import os
 from slack import WebClient
 from slack.errors import SlackApiError
-from type import Person, Sensor
+from utils.type import Person, Sensor
 import datetime
 import json
 

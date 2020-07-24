@@ -1,8 +1,9 @@
 import requests
-from utils.type import Person
 import sys
 sys.path.append('..')
+from utils.type import Person, Sensor
 import datetime
+import json
 
 class LineManager():
     def __init__(self, token, api):
@@ -24,3 +25,16 @@ class LineManager():
         payload = {'message': message}
         headers = {'Authorization': 'Bearer ' + self.token}  # 発行したトークン
         requests.post(self.api, data=payload, headers=headers)
+
+
+if __name__ == "__main__":
+    # change from utils.type import Person, Sensor to from type import Person, Sensor
+    print('test line')
+    # config取得
+    config = json.load(open('./../../config/config.json', 'r'))
+    token = config["line"]["line_notify_token"]
+    api = config["line"]["line_notify_api"]
+    line = LineManager(token, api)
+    mock_person = Person(id="0", name="Aさん", age="10",
+                             sex="male", sensor=Sensor(id="2", name="センサー1"))
+    line.send_fall_info(mock_person)
