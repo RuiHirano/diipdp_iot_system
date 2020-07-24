@@ -2,5 +2,8 @@
     "line": {
         "line_notify_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         "line_notify_api": "https://notify-api.line.me/api/notify"
+    },
+    "slack": {
+        "slack_access_token": "xxxxxxxx-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxx"
     }
 }

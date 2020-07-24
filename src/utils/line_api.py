@@ -9,7 +9,7 @@ class LineManager():
         self.token = token
         self.api = api
 
-    def send_person_concerned(self, person: Person):
+    def send_fall_info(self, person: Person):
         message = "\n転倒を検知しました。" \
             + "\n[詳細情報]" \
             + "\n日付: " + datetime.datetime.now().strftime('%Y年%m月%d日 %H:%M:%S')\

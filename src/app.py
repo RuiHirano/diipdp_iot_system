@@ -1,14 +1,16 @@
 from typing import List, NamedTuple, Dict
-from utils.line import LineManager
+from utils.line_api import LineManager
+from utils.slack_api import SlackManager
 from utils.type import Person, Sensor
 import json
 from flask import Flask, Response, jsonify, request
 
 
 class FlaskServer():
-    def __init__(self, line):
+    def __init__(self, line, slack):
         self.app = Flask(__name__)
         self.line = line
+        self.slack = slack
 
     def run(self):
         self.app.add_url_rule('/', '/', self.hello)
@@ -26,7 +28,8 @@ class FlaskServer():
         mock_person = Person(id="0", name="Aさん", age="10",
                              sex="male", sensor=Sensor(id="2", name="センサー1"))
         print('send')
-        self.line.send_person_concerned(mock_person)
+        self.line.send_fall_info(mock_person)
+        self.slack.send_fall_info(mock_person)
 
     def detect_fall(self, data) -> bool:
         x = data['x']
@@ -59,8 +62,11 @@ if __name__ == "__main__":
     token = config["line"]["line_notify_token"]
     api = config["line"]["line_notify_api"]
     line = LineManager(token, api)
+    # Slack
+    token = config["slack"]["slack_access_token"]
+    slack = SlackManager(token)
 
     # Server
     # app.run(debug=True)
-    server = FlaskServer(line)
+    server = FlaskServer(line, slack)
     server.run()
