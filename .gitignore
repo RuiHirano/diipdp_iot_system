@@ -2,4 +2,6 @@
 /config/*
 !/config/config.empty.json
 
+/src/utils/slackbot/slackbot_settings.py
+
 __pycache__

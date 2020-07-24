@@ -13,7 +13,7 @@ class FlaskServer():
     def run(self):
         self.app.add_url_rule('/', '/', self.hello)
         self.app.add_url_rule(
-            '/store_data', '/store_data', self.store_data, methods=["POST"])
+            '/acceleration', '/acceleration', self.store_acceleration, methods=["POST"])
         self.app.run(debug=True)
 
     def hello(self):
@@ -21,29 +21,31 @@ class FlaskServer():
         print(name)
         return name
 
-    def send_fall_info(self):
+    def send_to_line(self):
         # 転倒検知
         mock_person = Person(id="0", name="Aさん", age="10",
                              sex="male", sensor=Sensor(id="2", name="センサー1"))
         print('send')
         self.line.send_person_concerned(mock_person)
 
-    def detect_fall(self) -> bool:
-        isFall = False
-        # 分析結果、転倒だった
-        isFall = True
-        return isFall
+    def detect_fall(self, data) -> bool:
+        x = data['x']
+        y = data['y']
+        z = data['z']
+        if abs(x) > 0.8 and abs(y) > 0.8 and abs(z) > 0.8:
+            # x, y, zが共に0.8以上であれば転倒
+            print('Detact Fall!')
+            return True
+        return False
 
-    # 受信機から加速度が送られ、
-
-    def store_data(self):
-        print(request.get_json())
-        name = "Good"
-        print(name)
-        isFall = self.detect_fall()
+    # 加速度を受信する
+    def store_acceleration(self):
+        data = request.get_json()
+        print("acceleration: ",data)
+        isFall = self.detect_fall(data)
         if isFall:
-            self.send_fall_info()
-        return name
+            self.send_to_line()
+        return "ok"
 
 
 if __name__ == "__main__":
