@@ -29,6 +29,7 @@ class SlackManager():
 
 
 if __name__ == "__main__":
+    # change from utils.type import Person, Sensor to from type import Person, Sensor
     print('test slackbot')
     # config取得
     config = json.load(open('./../../config/config.json', 'r'))
