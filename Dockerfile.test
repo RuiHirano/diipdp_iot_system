@@ -1,0 +1,15 @@
+FROM python:3.7.8-slim-buster
+LABEL maintainer "Rui Hirano <ruirui@ucl.nuee.nagoya-u.ac.jp>"
+
+ENV USERNAME guest
+WORKDIR /home/$USERNAME/diidpd_iot_system
+COPY . .
+RUN pip install -r requirements.txt
+
+RUN apt-get update && apt-get install -y sudo
+RUN sudo apt-get install -y python-dev libbluetooth-dev libcap2-bin gcc && \
+    pip install beacontools[scan] pybluez
+
+
+WORKDIR /home/$USERNAME/diidpd_iot_system/src
+CMD ["/bin/bash"]
