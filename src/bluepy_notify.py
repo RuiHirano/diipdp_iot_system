@@ -33,7 +33,6 @@ def main():
 
     # ボタン notify を要求
     peri.writeCharacteristic(HANDLE_A_BUTTON + 1, b'\x01\x00')
-    peri.writeCharacteristic(HANDLE_B_BUTTON + 1, b'\x01\x00')
 
     print( "Notification を待機。A or B ボタン長押しでプログラム終了")
     while exflag == False:
