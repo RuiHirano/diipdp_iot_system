@@ -10,4 +10,4 @@ for device in devices:
   print('RSSI    : %s' % device.rssi)
   print('Adv data:')
   for (adtype, desc, value) in device.getScanData():
-    print(' (%3s) %s : %s ' % (adtype, desc, value.decode('utf-8')))
+    print(' (%3s) %s : %s ' % (adtype, desc, value.encode().decode('utf-8')))
