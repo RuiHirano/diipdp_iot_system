@@ -36,7 +36,7 @@ def main():
 
     print( "Notification を待機。A or B ボタン長押しでプログラム終了")
     while exflag == False:
-        if peri.waitForNotifications(1.0):
+        if peri.waitForNotifications(10.0):
             continue
     peri.disconnect()
 
