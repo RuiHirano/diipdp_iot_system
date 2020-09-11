@@ -2,7 +2,7 @@ import bluepy
 import binascii
 import sys
 
-HANDLE_ACC = 0x000c
+HANDLE_ACC = 0x001d
 
 exflag = False
 
@@ -30,13 +30,13 @@ def main():
     peri.withDelegate(MyDelegate(bluepy.btle.DefaultDelegate))
 
     # ボタン notify を要求
-    peri.writeCharacteristic(HANDLE_ACC, b'\x02\x00', True)
+    peri.writeCharacteristic(HANDLE_ACC, b'\x01\x00', True)
     #peri.writeCharacteristic(0x002a, b"\x50\x00", True) # 80ms ごとに通知 #デフォルトは 20ms
     #peri.writeCharacteristic(0x0028, b"\x01\x00", True) # 通知有効化
 
     print( "Notification を待機。A or B ボタン長押しでプログラム終了")
     while exflag == False:
-        if peri.waitForNotifications(10.0):
+        if peri.waitForNotifications(1.0):
             continue
     peri.disconnect()
 
