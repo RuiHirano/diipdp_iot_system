@@ -2,7 +2,7 @@ import bluepy
 import binascii
 import sys
 
-HANDLE_ACC = 0xE1FF
+HANDLE_ACC = 0x001d
 
 exflag = False
 
@@ -14,9 +14,7 @@ class MyDelegate(bluepy.btle.DefaultDelegate):
         global exflag
         print("handle name: ", cHandle, data)
         if cHandle == HANDLE_ACC:
-            b = "button A"
-            if data[0] == 0x02:   # ボタン長押し
-                exflag = True
+            pass
 
         c_data = binascii.b2a_hex(data)
         print( "%s: %s" % (b, c_data) )
@@ -32,7 +30,7 @@ def main():
     peri.withDelegate(MyDelegate(bluepy.btle.DefaultDelegate))
 
     # ボタン notify を要求
-    peri.writeCharacteristic(HANDLE_ACC, b'\x01\x00')
+    peri.writeCharacteristic(HANDLE_ACC, b'\x01\x00', True)
     #peri.writeCharacteristic(0x002a, b"\x50\x00", True) # 80ms ごとに通知 #デフォルトは 20ms
     #peri.writeCharacteristic(0x0028, b"\x01\x00", True) # 通知有効化
 
