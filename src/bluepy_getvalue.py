@@ -8,9 +8,9 @@ def main():
     peri = bluepy.btle.Peripheral()
     peri.connect(devadr, bluepy.btle.ADDR_TYPE_PUBLIC)
     devname = peri.readCharacteristic(HANDLE_DEVNAME)
-    print( "Device Name: %s" % devname )
+    print( "Device Name: %s" % devname.decode("utf-8") )
     serialnum = peri.readCharacteristic(HANDLE_SERIAL)
-    print( "Serial Number: %s" % serialnum )
+    print( "Serial Number: %s" % serialnum.decode("utf-8") )
     peri.disconnect()
 
 if __name__ == "__main__":
