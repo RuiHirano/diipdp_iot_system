@@ -2,8 +2,7 @@ import bluepy
 import binascii
 import sys
 
-HANDLE_A_BUTTON = 0x0029
-HANDLE_B_BUTTON = 0x002c
+HANDLE_A_BUTTON = 0xE1FF
 
 exflag = False
 
@@ -17,10 +16,6 @@ class MyDelegate(bluepy.btle.DefaultDelegate):
         if cHandle == HANDLE_A_BUTTON:
             b = "button A"
             if data[0] == 0x02:   # ボタン長押し
-                exflag = True
-        if cHandle == HANDLE_B_BUTTON:
-            b = "button B"
-            if data[0] == 0x02:
                 exflag = True
 
         c_data = binascii.b2a_hex(data)
