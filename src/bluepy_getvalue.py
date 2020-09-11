@@ -2,7 +2,7 @@ import sys
 import bluepy
 
 HANDLE_DEVNAME = 0x03
-HANDLE_SERIAL = 0x21
+HANDLE_SERIAL = 0x0021
 SERVICE_DATA = 0x06
 
 def main():
