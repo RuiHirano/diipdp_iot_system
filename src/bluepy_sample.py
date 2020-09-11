@@ -5,7 +5,8 @@ devices = scanner.scan(3)      # 3秒間スキャンする
 
 for device in devices:
   print('======================================================')
-  print('device : %s' % device)
+  print('iface : %s' % device.iface)
+  print('connectable : %s' % device.connectable)
   print('address : %s' % device.addr)
   print('addrType: %s' % device.addrType)
   print('RSSI    : %s' % device.rssi)
