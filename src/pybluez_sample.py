@@ -19,7 +19,7 @@ class Reader(object):
 
     def request_data(self):
         data = self.requester.read_by_uuid(
-                "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0")
+                "00002a00-0000-1000-8000-00805f9b34fb")[0]
         print("data: ", data)
         try:
             print("Device name: " + data.decode("utf-8"))
