@@ -8,6 +8,8 @@ class MyDelegate(btle.DefaultDelegate):
     def handleNotification(self, cHandle, data):
         # ... perhaps check cHandle
         # ... process 'data'
+        print("data: ", data)
+        pass
 
 
 # Initialisation  -------
@@ -30,5 +32,5 @@ if __name__ == '__main__':
             # handleNotification() was called
             continue
 
-        print "Waiting..."
+        print("Waiting...")
         # Perhaps do something else here
