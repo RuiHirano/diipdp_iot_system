@@ -2,7 +2,7 @@ import bluepy
 import binascii
 import sys
 
-HANDLE_A_BUTTON = 0xE1FF
+HANDLE_A_BUTTON = 0x0000
 
 exflag = False
 
