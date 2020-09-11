@@ -1,37 +1,13 @@
 import bluepy
-import sys
 
-class MyDelegate(bluepy.btle.DefaultDelegate):
-    def __init__(self, params):
-        bluepy.btle.DefaultDelegate.__init__(self)
-        # ... initialise here
+scanner = bluepy.btle.Scanner(0)
+devices = scanner.scan(10)      # 3秒間スキャンする
 
-    def handleNotification(self, cHandle, data):
-        # ... perhaps check cHandle
-        # ... process 'data'
-        print("data: ", data)
-        pass
-
-
-# Initialisation  -------
-if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("Usage: {} <addr>".format(sys.argv[0]))
-        sys.exit(1)
-    p = bluepy.btle.Peripheral( sys.argv[1] )
-    p.setDelegate( MyDelegate(params) )
-
-    # Setup to turn notifications on, e.g.
-    #   svc = p.getServiceByUUID( service_uuid )
-    #   ch = svc.getCharacteristics( char_uuid )[0]
-    #   ch.write( setup_data )
-
-    # Main loop --------
-
-    while True:
-        if p.waitForNotifications(1.0):
-            # handleNotification() was called
-            continue
-
-        print("Waiting...")
-        # Perhaps do something else here
+for device in devices:
+  print('======================================================')
+  print('address : %s' % device.addr)
+  print('addrType: %s' % device.addrType)
+  print('RSSI    : %s' % device.rssi)
+  print('Adv data:')
+  for (adtype, desc, value) in device.getScanData():
+    print(' (%3s) %s : %s ' % (adtype, desc, value))
