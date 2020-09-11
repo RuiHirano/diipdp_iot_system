@@ -1,10 +1,11 @@
 import bluepy
 
 scanner = bluepy.btle.Scanner(0)
-devices = scanner.scan(10)      # 3秒間スキャンする
+devices = scanner.scan(3)      # 3秒間スキャンする
 
 for device in devices:
   print('======================================================')
+  print('device : %s' % device)
   print('address : %s' % device.addr)
   print('addrType: %s' % device.addrType)
   print('RSSI    : %s' % device.rssi)
