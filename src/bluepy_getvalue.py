@@ -1,7 +1,7 @@
 import sys
 import bluepy
 
-HANDLE_DEVNAME = 0xffe1
+HANDLE_DEVNAME = 0xfff1
 HANDLE_SERIAL = 0x0006
 
 def main():
