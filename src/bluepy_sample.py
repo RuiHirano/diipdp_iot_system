@@ -11,21 +11,24 @@ class MyDelegate(btle.DefaultDelegate):
 
 
 # Initialisation  -------
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        print("Usage: {} <addr>".format(sys.argv[0]))
+        sys.exit(1)
+    p = btle.Peripheral( sys.argv[1] )
+    p.setDelegate( MyDelegate(params) )
 
-p = btle.Peripheral( address )
-p.setDelegate( MyDelegate(params) )
+    # Setup to turn notifications on, e.g.
+    #   svc = p.getServiceByUUID( service_uuid )
+    #   ch = svc.getCharacteristics( char_uuid )[0]
+    #   ch.write( setup_data )
 
-# Setup to turn notifications on, e.g.
-#   svc = p.getServiceByUUID( service_uuid )
-#   ch = svc.getCharacteristics( char_uuid )[0]
-#   ch.write( setup_data )
+    # Main loop --------
 
-# Main loop --------
+    while True:
+        if p.waitForNotifications(1.0):
+            # handleNotification() was called
+            continue
 
-while True:
-    if p.waitForNotifications(1.0):
-        # handleNotification() was called
-        continue
-
-    print "Waiting..."
-    # Perhaps do something else here
+        print "Waiting..."
+        # Perhaps do something else here
