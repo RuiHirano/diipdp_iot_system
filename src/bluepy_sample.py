@@ -1,8 +1,8 @@
-import btle
+import bluepy
 
-class MyDelegate(btle.DefaultDelegate):
+class MyDelegate(bluepy.btle.DefaultDelegate):
     def __init__(self, params):
-        btle.DefaultDelegate.__init__(self)
+        bluepy.btle.DefaultDelegate.__init__(self)
         # ... initialise here
 
     def handleNotification(self, cHandle, data):
@@ -17,7 +17,7 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("Usage: {} <addr>".format(sys.argv[0]))
         sys.exit(1)
-    p = btle.Peripheral( sys.argv[1] )
+    p = bluepy.btle.Peripheral( sys.argv[1] )
     p.setDelegate( MyDelegate(params) )
 
     # Setup to turn notifications on, e.g.
