@@ -32,7 +32,7 @@ def main():
 
     # ボタン notify を要求
     peri.writeCharacteristic(HANDLE_ACC, b'\x01\x00', True)
-    perip.writeCharacteristic(0x0028, "\x01\x00", True) # 通知有効化
+    peri.writeCharacteristic(0x0028, "\x01\x00", True) # 通知有効化
     #peri.writeCharacteristic(0x002a, b"\x50\x00", True) # 80ms ごとに通知 #デフォルトは 20ms
     #peri.writeCharacteristic(0x0028, b"\x01\x00", True) # 通知有効化
 
