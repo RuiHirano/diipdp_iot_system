@@ -2,7 +2,7 @@ import bluepy
 import binascii
 import sys
 
-HANDLE_ACC = 0x001d
+HANDLE_ACC = 20
 
 exflag = False
 
