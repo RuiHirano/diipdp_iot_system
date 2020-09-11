@@ -33,7 +33,7 @@ def main():
 
     devadr = sys.argv[1]
     peri = bluepy.btle.Peripheral()
-    peri.connect(devadr, bluepy.btle.ADDR_TYPE_RANDOM)
+    peri.connect(devadr, bluepy.btle.ADDR_TYPE_PUBLIC)
     peri.withDelegate(MyDelegate(bluepy.btle.DefaultDelegate))
 
     # ボタン notify を要求
