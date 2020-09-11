@@ -13,3 +13,13 @@ for device in devices:
   print('Adv data:')
   for (adtype, desc, value) in device.getScanData():
     print(' (%3s) %s : %s ' % (adtype, desc, value.encode().decode('utf-8')))
+    if desc == "16b Service Data":
+        print("get 16b Service Data")
+        data_length = int((value[0:1]), 16).decode('utf-8')
+        print("data_length: ", data_length)
+        flag_data_type = int((value[1:2]), 16).decode('utf-8')
+        print("flag_data_type: ", flag_data_type)
+        flag_data = int((value[2:3]), 16).decode('utf-8')
+        print("flag_data: ", flag_data)
+        data_length2 = int((value[3:4]), 16).decode('utf-8')
+        print("data_length2: ", data_length2)
