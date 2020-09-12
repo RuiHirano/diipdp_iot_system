@@ -49,7 +49,7 @@ def main():
     #peri.writeCharacteristic(0x002a, b"\x50\x00", True) # 80ms ごとに通知 #デフォルトは 20ms
     #peri.writeCharacteristic(0x0028, b"\x01\x00", True) # 通知有効化
 
-    print( "Notification を待機。A or B ボタン長押しでプログラム終了")
+    print( "Notification を待機")
     while exflag == False:
         if peri.waitForNotifications(1.0):
             print("wait")

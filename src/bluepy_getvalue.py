@@ -2,8 +2,8 @@ import sys
 import bluepy
 
 HANDLE_DEVNAME = 0x03
-HANDLE_SERIAL = 0x0021
-SERVICE_DATA = 0x06
+HANDLE_SERIAL = 0x001d
+SERVICE_DATA = 0x0021
 
 def main():
     peri = bluepy.btle.Peripheral()
