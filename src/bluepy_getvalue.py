@@ -1,17 +1,18 @@
 import sys
 import bluepy
 
-HANDLE_DEVNAME = 0x03
-HANDLE_SERIAL = 0x001d
-SERVICE_DATA = 0x0021
+HANDLE_DEVNAME = 0x0003
+HANDLE_SERIAL = 0x0005
+SERVICE_DATA = 0x0007
 
 def main():
     peri = bluepy.btle.Peripheral()
     peri.connect(devadr, bluepy.btle.ADDR_TYPE_PUBLIC)
     devname = peri.readCharacteristic(HANDLE_DEVNAME)
     print( "Device Name: %s" % devname.decode("utf-8") )
-    serialnum = peri.getCharacteristics(HANDLE_SERIAL)
+    serialnum = peri.readCharacteristic(HANDLE_SERIAL)
     print( "Serial Number: %s" % serialnum )
+    print(b"\xb8\xa8\xa3\x96Ia5\x9b7\x00,\xf0'2\xed\xff")
     sdata = peri.readCharacteristic(SERVICE_DATA)
     print( "Service Data: %s" % sdata )
     peri.disconnect()
