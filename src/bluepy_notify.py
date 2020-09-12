@@ -43,7 +43,7 @@ def main():
         print(" Handle %04x: %s" % (chara.getHandle(), chara.propertiesToString()))
 
     # ボタン notify を要求
-    peri.writeCharacteristic(29, b'\x01\x00')
+    peri.writeCharacteristic(HANDLE_ACC, b'\x01\x00')
     #peri.writeCharacteristic(HANDLE_ACC2, b'\x01\x00', True)
     #peri.writeCharacteristic(NOTIFY, "\x01\x00", True) # 通知有効化
     #peri.writeCharacteristic(0x002a, b"\x50\x00", True) # 80ms ごとに通知 #デフォルトは 20ms
