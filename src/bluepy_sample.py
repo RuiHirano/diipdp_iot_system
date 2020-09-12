@@ -1,4 +1,5 @@
 import bluepy
+import binascii
 
 scanner = bluepy.btle.Scanner(0)
 devices = scanner.scan(3)      # 3秒間スキャンする

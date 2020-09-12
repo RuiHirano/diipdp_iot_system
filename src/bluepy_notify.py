@@ -14,8 +14,8 @@ class MyDelegate(bluepy.btle.DefaultDelegate):
     def handleNotification(self, cHandle, data):
         global exflag
         print("handle name: ", cHandle, data)
-        if cHandle == HANDLE_ACC:
-            pass
+        #if cHandle == HANDLE_ACC:
+        #    pass
 
         c_data = binascii.b2a_hex(data)
         print( "%s: %s" % (b, c_data) )
@@ -33,7 +33,7 @@ def main():
 
     # ボタン notify を要求
     peri.writeCharacteristic(HANDLE_ACC, b'\x01\x00', True)
-    peri.writeCharacteristic(NOTIFY, "\x01\x00", True) # 通知有効化
+    #peri.writeCharacteristic(NOTIFY, "\x01\x00", True) # 通知有効化
     #peri.writeCharacteristic(0x002a, b"\x50\x00", True) # 80ms ごとに通知 #デフォルトは 20ms
     #peri.writeCharacteristic(0x0028, b"\x01\x00", True) # 通知有効化
 
