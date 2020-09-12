@@ -10,7 +10,7 @@ def main():
     peri.connect(devadr, bluepy.btle.ADDR_TYPE_PUBLIC)
     devname = peri.readCharacteristic(HANDLE_DEVNAME)
     print( "Device Name: %s" % devname.decode("utf-8") )
-    serialnum = peri.readCharacteristic(HANDLE_SERIAL)
+    serialnum = peri.getCharacteristics(HANDLE_SERIAL)
     print( "Serial Number: %s" % serialnum )
     sdata = peri.readCharacteristic(SERVICE_DATA)
     print( "Service Data: %s" % sdata )
