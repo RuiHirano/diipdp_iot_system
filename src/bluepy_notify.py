@@ -29,7 +29,12 @@ def main():
     peri = bluepy.btle.Peripheral()
     peri.connect(devadr, bluepy.btle.ADDR_TYPE_PUBLIC)
     peri.withDelegate(MyDelegate(bluepy.btle.DefaultDelegate))
-    
+    print("connected")
+    charas = peri.getCharacteristics()
+    for chara in charas:
+        print("======================================================")
+        print(" UUID : %s" % chara.uuid )
+        print(" Handle %04x: %s" % (chara.getHandle(), chara.propertiesToString()))
 
     # ボタン notify を要求
     peri.writeCharacteristic(HANDLE_ACC, b'\x01\x00', True)
@@ -42,7 +47,7 @@ def main():
         if peri.waitForNotifications(10):
             print("wait")
             continue
-    peri.disconnect()
+    #peri.disconnect()
 
 if __name__ == "__main__":
     main()
