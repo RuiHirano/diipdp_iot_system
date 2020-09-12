@@ -7,7 +7,7 @@ class ScanDelegate(DefaultDelegate):
 
     def handleDiscovery(self, dev, isNewDev, isNewData):
         if dev.addr == "ac:23:3f:26:35:20":
-            print(datetime.now().time(), dev.rawData, dev.addr)
+            print(datetime.now().time(), dev.rawData.replace('\x', ''), dev.addr)
         scanner.clear()
         scanner.start()
 

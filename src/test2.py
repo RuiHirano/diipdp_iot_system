@@ -32,7 +32,7 @@ def convert2Complement(binx):
 
 if __name__ == "__main__":
     data = "e1ff a1 03 64 0005 0000 00f8 2035263f23ac"
-    print(b"\xb8\xa8\xa3\x96Ia5".decode('utf-8'))
+    print(b'\x02\x01\x06\x03\x03\xe1\xff\x12\x16\xe1\xff\xa1\x03d\x00\x05\x00\x00\x00\xf8 5&?#\xac'.decode('sjis'))
     #cal = binascii.b2a_hex(data)
     #print("cal: ", cal)
     i = 255
