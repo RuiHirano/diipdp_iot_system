@@ -12,9 +12,9 @@ SERVICE_DATA5 = 0x001d # ??? b'F\xd9c\x0e\xad\x14u@\xcaM\xbd/\x10\xeb\x066', 2: 
 SERVICE_DATA6 = 0x0021 # none
 SERVICE_DATA7 = 0x0023 # none
 SERVICE_DATA8 = 0x0025 # none
-SERVICE_DATA9 = 0x0027
-SERVICE_DATA10 = 0x0029
-SERVICE_DATA11 = 0x002b
+SERVICE_DATA9 = 0x0027 #none
+SERVICE_DATA10 = 0x0029 #none
+SERVICE_DATA11 = 0x002b #none
 
 def main():
     peri = bluepy.btle.Peripheral()
@@ -45,8 +45,8 @@ def main():
     #print( "Service Data9: %s" % sdata )
     #sdata = peri.readCharacteristic(SERVICE_DATA10)
     #print( "Service Data10: %s" % sdata )
-    sdata = peri.readCharacteristic(SERVICE_DATA11)
-    print( "Service Data11: %s" % sdata )
+    #sdata = peri.readCharacteristic(SERVICE_DATA11)
+    #print( "Service Data11: %s" % sdata )
     peri.disconnect()
 
 if __name__ == "__main__":
