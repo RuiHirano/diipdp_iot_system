@@ -37,14 +37,14 @@ class ScanDelegate(DefaultDelegate):
         if dev.addr == "ac:23:3f:26:35:20":
             #print(datetime.now().time(), str(dev.rawData).replace('\\x', ''), dev.addr)
             data = str(dev.rawData).replace('\\x', '')
-            print(data[29:33], data[33:37], data[37:41])
+            #print(data[29:33], data[33:37], data[37:41])
             try:
                 accx = convert16to10(data[29:33])
                 accy = convert16to10(data[33:37])
                 accz = convert16to10(data[37:41])
                 print('date {}, accx {}, accy {}, accz {}'.format(datetime.now().time(),accx, accy, accz))
             except:
-                print("date {}, error", datetime.now().time())
+                print("date {}, error".format(datetime.now().time()))
         scanner.clear()
         scanner.start()
 
