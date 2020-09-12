@@ -2,14 +2,14 @@ import sys
 import bluepy
 
 HANDLE_DEVNAME = 0x0009
-HANDLE_SERIAL = 0x0010
-SERVICE_DATA = 0x0012
-SERVICE_DATA1 = 0x0014
-SERVICE_DATA2 = 0x0016
-SERVICE_DATA3 = 0x0018
-SERVICE_DATA4 = 0x001a
-SERVICE_DATA5 = 0x001d
-SERVICE_DATA6 = 0x0021
+HANDLE_SERIAL = 0x0010   # Manufacture
+SERVICE_DATA = 0x0012   # Model
+SERVICE_DATA1 = 0x0014  # Mac Address
+SERVICE_DATA2 = 0x0016  # HardwareVersion
+SERVICE_DATA3 = 0x0018  # FirmwareVersion
+SERVICE_DATA4 = 0x001a # Software Version
+SERVICE_DATA5 = 0x001d # ??? b'F\xd9c\x0e\xad\x14u@\xcaM\xbd/\x10\xeb\x066', 2: b'\xb2l\xf70D\xbd\xc3(}\x98\x19\xca\x11\xfa1\xba'
+SERVICE_DATA6 = 0x0021 
 SERVICE_DATA7 = 0x0023
 SERVICE_DATA8 = 0x0025
 SERVICE_DATA9 = 0x0027
@@ -33,8 +33,8 @@ def main():
     print( "Service Data3: %s" % sdata )
     sdata = peri.readCharacteristic(SERVICE_DATA4)
     print( "Service Data4: %s" % sdata )
-    sdata = peri.readCharacteristic(SERVICE_DATA5)
-    print( "Service Data5: %s" % sdata )
+    #sdata = peri.readCharacteristic(SERVICE_DATA5)
+    #print( "Service Data5: %s" % sdata )
     sdata = peri.readCharacteristic(SERVICE_DATA6)
     print( "Service Data6: %s" % sdata )
     sdata = peri.readCharacteristic(SERVICE_DATA7)
