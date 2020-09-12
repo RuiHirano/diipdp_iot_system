@@ -11,9 +11,9 @@ def main():
     devname = peri.readCharacteristic(HANDLE_DEVNAME)
     print( "Device Name: %s" % devname.decode("utf-8") )
     serialnum = peri.readCharacteristic(HANDLE_SERIAL)
-    print( "Serial Number: %s" % serialnum.decode("utf-8") )
+    print( "Serial Number: %s" % serialnum )
     sdata = peri.readCharacteristic(SERVICE_DATA)
-    print( "Service Data: %s" % sdata.decode("utf-8") )
+    print( "Service Data: %s" % sdata )
     peri.disconnect()
 
 if __name__ == "__main__":
