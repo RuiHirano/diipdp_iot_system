@@ -13,7 +13,7 @@ def convert16to10(x="0000", dicimal=2):
     rightbin = binx[dicimal*4:]  # 小数点部分
 
     # 10進数へ変換(整数部分)
-    left10 = int(leftbin, 0)
+    left10 = int(leftbin, 2)
     # 10進数へ変換(少数部分)
     right10 = 0
     for index, k in enumerate(rightbin):

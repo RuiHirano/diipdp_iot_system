@@ -12,7 +12,7 @@ def convert16to10(x="0000", dicimal=2):
     rightbin = binx[dicimal*4:]  # 小数点部分
 
     # 10進数へ変換(整数部分)
-    left10 = int(leftbin, 0)
+    left10 = int(leftbin, 2)
     # 10進数へ変換(少数部分)
     right10 = 0
     for index, k in enumerate(rightbin):
@@ -32,9 +32,6 @@ def convert2Complement(binx):
 
 if __name__ == "__main__":
     data = "e1ff a1 03 64 0005 0000 00f8 2035263f23ac"
-    print(b'\x02\x01\x06\x03\x03\xe1\xff\x12\x16\xe1\xff\xa1\x03d\x00\x05\x00\x00\x00\xf8 5&?#\xac'.replace('\\x', ''))
-    #cal = binascii.b2a_hex(data)
-    #print("cal: ", cal)
     i = 255
     hex_str = format(i, 'x')
     print("hex: ", hex_str)
@@ -47,7 +44,7 @@ if __name__ == "__main__":
     print("flag data type: ", bytes.fromhex("f7"))
     print("flag data: ", int("000000", 16))
 
-    test = convert16to10()
+    test = convert16to10("0100")
     print("debug: ", test)
 
 
