@@ -3,7 +3,12 @@ import binascii
 import sys
 
 HANDLE_ACC = 0x001d
-NOTIFY = 0x0028
+HANDLE_ACC2 = 0x0023
+HANDLE_ACC3 = 0x0025
+HANDLE_ACC4 = 0x0027
+HANDLE_ACC5 = 0x0029
+HANDLE_ACC6 = 0x002b
+
 
 exflag = False
 
@@ -38,11 +43,11 @@ def main():
 
     # ボタン notify を要求
     peri.writeCharacteristic(HANDLE_ACC, b'\x01\x00', True)
-    peri.writeCharacteristic(0x0023, b'\x01\x00', True)
-    peri.writeCharacteristic(0x0025, b'\x01\x00', True)
-    peri.writeCharacteristic(0x0027, b'\x01\x00', True)
-    peri.writeCharacteristic(0x0029, b'\x01\x00', True)
-    peri.writeCharacteristic(0x002b, b'\x01\x00', True)
+    peri.writeCharacteristic(HANDLE_ACC2, b'\x01\x00', True)
+    peri.writeCharacteristic(HANDLE_ACC3, b'\x01\x00', True)
+    peri.writeCharacteristic(HANDLE_ACC4, b'\x01\x00', True)
+    peri.writeCharacteristic(HANDLE_ACC5, b'\x01\x00', True)
+    peri.writeCharacteristic(HANDLE_ACC6, b'\x01\x00', True)
     #peri.writeCharacteristic(NOTIFY, "\x01\x00", True) # 通知有効化
     #peri.writeCharacteristic(0x002a, b"\x50\x00", True) # 80ms ごとに通知 #デフォルトは 20ms
     #peri.writeCharacteristic(0x0028, b"\x01\x00", True) # 通知有効化
