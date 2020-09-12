@@ -38,10 +38,13 @@ class ScanDelegate(DefaultDelegate):
             print(datetime.now().time(), str(dev.rawData).replace('\\x', ''), dev.addr)
             data = str(dev.rawData).replace('\\x', '')
             print(data[29:33], data[33:37], data[37:41])
-            accx = convert16to10(data[29:33])
-            accy = convert16to10(data[33:37])
-            accz = convert16to10(data[37:41])
-            print('accx {}, accy {}, accz {}'.format(accx, accy, accz))
+            try:
+                accx = convert16to10(data[29:33])
+                accy = convert16to10(data[33:37])
+                accz = convert16to10(data[37:41])
+                print('accx {}, accy {}, accz {}'.format(accx, accy, accz))
+            except:
+                print("error")
         scanner.clear()
         scanner.start()
 
