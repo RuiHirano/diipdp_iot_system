@@ -6,7 +6,8 @@ class ScanDelegate(DefaultDelegate):
         DefaultDelegate.__init__(self)
 
     def handleDiscovery(self, dev, isNewDev, isNewData):
-        print(datetime.now().time(), dev.rawData, dev.addr)
+        if dev.addr == "ac:23:3f:26:35:20":
+            print(datetime.now().time(), dev.rawData, dev.addr)
         scanner.clear()
         scanner.start()
 
