@@ -1,5 +1,6 @@
 from datetime import datetime
 from bluepy.btle import Scanner, DefaultDelegate
+import sys
 
 def convert16to10(x="0000", dicimal=2):
     minus = False
