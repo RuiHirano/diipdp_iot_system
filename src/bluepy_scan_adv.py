@@ -34,7 +34,7 @@ class ScanDelegate(DefaultDelegate):
         DefaultDelegate.__init__(self)
 
     def handleDiscovery(self, dev, isNewDev, isNewData):
-        if dev.addr == "ac:23:3f:26:35:20":
+        if dev.addr == devadr:
             #print(datetime.now().time(), str(dev.rawData).replace('\\x', ''), dev.addr)
             data = str(dev.rawData).replace('\\x', '')
             #print(data[29:33], data[33:37], data[37:41])
@@ -52,5 +52,10 @@ class ScanDelegate(DefaultDelegate):
 scanner = Scanner().withDelegate(ScanDelegate())
 scanner.start()
 
-while True:
-    scanner.process()
+if __name__ == "__main__":
+    if len(sys.argv) == 1:
+      print('Usage: getvalue.py BLE_DEVICE_ADDRESS')
+      sys.exit()
+    devadr = sys.argv[1]
+    while True:
+        scanner.process()
