@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from datetime import datetime
 from bluepy.btle import Scanner, DefaultDelegate
 import sys
@@ -35,10 +36,11 @@ class ScanDelegate(DefaultDelegate):
         DefaultDelegate.__init__(self)
 
     def handleDiscovery(self, dev, isNewDev, isNewData):
+
         if dev.addr == devadr:
-            #print(datetime.now().time(), str(dev.rawData).replace('\\x', ''), dev.addr)
+            print(datetime.now().time(), str(dev.rawData).replace('\\x', ''), dev.addr)
             data = str(dev.rawData).replace('\\x', '')
-            #print(data[29:33], data[33:37], data[37:41])
+            print(data[29:33], data[33:37], data[37:41])
             try:
                 accx = convert16to10(data[29:33])
                 accy = convert16to10(data[33:37])
@@ -54,6 +56,7 @@ scanner = Scanner().withDelegate(ScanDelegate())
 scanner.start()
 
 if __name__ == "__main__":
+    print("starting...")
     if len(sys.argv) == 1:
       print('Usage: getvalue.py BLE_DEVICE_ADDRESS')
       sys.exit()
