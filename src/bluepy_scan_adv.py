@@ -39,7 +39,7 @@ class ScanDelegate(DefaultDelegate):
 
         if dev.addr == devadr:
             print(datetime.now().time(), str(dev.rawData), dev.addr)
-            print(datetime.now().time(), str(dev.rawData).replace('\\x', ''), dev.addr)
+            print(datetime.now().time(), str(dev.rawData).replace('\\x', '').replace("0201060303e1ff1216e1ffa103d", "").replace(" 5&?#ac", ""), dev.addr)
             data = str(dev.rawData).replace('\\x', '')
             print(data[29:33], data[33:37], data[37:41])
             try:
