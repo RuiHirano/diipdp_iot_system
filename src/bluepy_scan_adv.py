@@ -37,13 +37,13 @@ class ScanDelegate(DefaultDelegate):
         DefaultDelegate.__init__(self)
 
     def handleDiscovery(self, dev, isNewDev, isNewData):
-
+        
         if dev.addr == devadr:
-            print(datetime.now().time(), str(dev.rawData), dev.addr)
-            print(datetime.now().time(), str(dev.rawData).replace('\\x', '').replace("0201060303e1ff1216e1ffa103d", "").replace(" 5&?#ac", ""), dev.addr)
+            #print(datetime.now().time(), str(dev.rawData), dev.addr)
+            #print(datetime.now().time(), str(dev.rawData).replace('\\x', '').replace("0201060303e1ff1216e1ffa103d", "").replace(" 5&?#ac", ""), dev.addr)
             data = str(dev.rawData).replace('\\x', '')
             #data = re.sub('[^0-9a-f]',"", data)
-            print(data[29:33], data[33:37], data[37:41])
+            #print(data[29:33], data[33:37], data[37:41])
             # @や!などはのぞいて後ろから4つずつ
             try:
                 accx = convert16to10(data[29:33])
