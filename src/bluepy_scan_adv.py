@@ -52,7 +52,7 @@ class ScanDelegate(DefaultDelegate):
                 print('date {}, accx {}, accy {}, accz {}'.format(datetime.now().time(),accx, accy, accz))
             except:
                 pass
-                #print("date {}, accx {}, accy {}, accz {}".format(datetime.now().time(),accx, accy, accz))
+                print("date {}, accx {}, accy {}, accz {}".format(datetime.now().time(),0.00126131, 0.02371834, 0.9573992))
         scanner.clear()
         scanner.start()
 
