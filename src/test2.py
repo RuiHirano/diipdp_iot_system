@@ -1,4 +1,5 @@
 import binascii
+import re
 
 def convert16to10(x="0000", dicimal=2):
     minus = False
@@ -26,11 +27,14 @@ def convert16to10(x="0000", dicimal=2):
 def convert2Complement(binx):
     # 2の補数変換
     return format((-int(binx[0]) << len(binx) | int(binx, 2))*-1, '016b')
-    
-        
 
+def find_data():
+    st = "ff/00}fffb"
+    data = re.sub('[^0-9a-f]',"", st)
+    print(data)
 
 if __name__ == "__main__":
+    find_data()
     data = "e1ff a1 03 64 0005 0000 00f8 2035263f23ac"
     i = 255
     hex_str = format(i, 'x')

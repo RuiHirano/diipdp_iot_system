@@ -2,6 +2,7 @@
 from datetime import datetime
 from bluepy.btle import Scanner, DefaultDelegate
 import sys
+import re
 
 def convert16to10(x="0000", dicimal=2):
     minus = False
@@ -41,14 +42,17 @@ class ScanDelegate(DefaultDelegate):
             print(datetime.now().time(), str(dev.rawData), dev.addr)
             print(datetime.now().time(), str(dev.rawData).replace('\\x', '').replace("0201060303e1ff1216e1ffa103d", "").replace(" 5&?#ac", ""), dev.addr)
             data = str(dev.rawData).replace('\\x', '')
+            #data = re.sub('[^0-9a-f]',"", data)
             print(data[29:33], data[33:37], data[37:41])
+            # @や!などはのぞいて後ろから4つずつ
             try:
                 accx = convert16to10(data[29:33])
                 accy = convert16to10(data[33:37])
                 accz = convert16to10(data[37:41])
                 print('date {}, accx {}, accy {}, accz {}'.format(datetime.now().time(),accx, accy, accz))
             except:
-                print("date {}, error".format(datetime.now().time()))
+                pass
+                #print("date {}, accx {}, accy {}, accz {}".format(datetime.now().time(),accx, accy, accz))
         scanner.clear()
         scanner.start()
 
